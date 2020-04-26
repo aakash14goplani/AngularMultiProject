@@ -2,5 +2,124 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "angular-universal": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/angular-universal",
+      "sourceRoot": "projects/angular-universal/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-universal",
+            "index": "projects/angular-universal/src/index.html",
+            "main": "projects/angular-universal/src/main.ts",
+            "polyfills": "projects/angular-universal/src/polyfills.ts",
+            "tsConfig": "projects/angular-universal/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/angular-universal/src/favicon.ico",
+              "projects/angular-universal/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/angular-universal/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-universal/src/environments/environment.ts",
+                  "with": "projects/angular-universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-universal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-universal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-universal:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-universal/src/test.ts",
+            "polyfills": "projects/angular-universal/src/polyfills.ts",
+            "tsConfig": "projects/angular-universal/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-universal/karma.conf.js",
+            "assets": [
+              "projects/angular-universal/src/favicon.ico",
+              "projects/angular-universal/src/assets"
+            ],
+            "styles": [
+              "projects/angular-universal/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-universal/tsconfig.app.json",
+              "projects/angular-universal/tsconfig.spec.json",
+              "projects/angular-universal/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/angular-universal/e2e/protractor.conf.js",
+            "devServerTarget": "angular-universal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-universal:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "angular-universal"
 }
