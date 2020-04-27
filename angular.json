@@ -139,7 +139,8 @@
             "aot": true,
             "assets": [
               "projects/service-workers-pwa/src/favicon.ico",
-              "projects/service-workers-pwa/src/assets"
+              "projects/service-workers-pwa/src/assets",
+              "projects/service-workers-pwa/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/service-workers-pwa/src/styles.css"
@@ -173,7 +174,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "./ngsw-config.json"
             }
           }
         },
@@ -203,7 +206,8 @@
             "karmaConfig": "projects/service-workers-pwa/karma.conf.js",
             "assets": [
               "projects/service-workers-pwa/src/favicon.ico",
-              "projects/service-workers-pwa/src/assets"
+              "projects/service-workers-pwa/src/assets",
+              "projects/service-workers-pwa/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/service-workers-pwa/src/styles.css"
