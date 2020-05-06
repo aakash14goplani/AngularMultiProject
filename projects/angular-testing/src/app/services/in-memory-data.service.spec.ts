@@ -6,7 +6,9 @@ describe('InMemoryDataService', () => {
   let service: InMemoryDataService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ InMemoryDataService ]
+    });
     service = TestBed.inject(InMemoryDataService);
   });
 
