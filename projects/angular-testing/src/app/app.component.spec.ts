@@ -1,16 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './services/message.service';
 
 describe('AppComponent', () => {
+  
+  let mockMessageService;
+
   beforeEach(async(() => {
+    mockMessageService = jasmine.createSpyObj(['messages']);
+
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MessagesComponent
       ],
+      providers: [
+        { provide: MessageService, useValue: mockMessageService }
+      ]
     }).compileComponents();
   }));
 

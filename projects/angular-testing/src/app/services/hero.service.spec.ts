@@ -37,6 +37,7 @@ describe('HeroService', () => {
       const req = httpTestingController.expectOne('api/heroes/4');
       req.flush({id: 4, name: 'SuperDude', strength: 100});
       httpTestingController.verify();
+      expect(true).toBe(true);
     });
 
     // alternate method of injecting service
@@ -49,6 +50,7 @@ describe('HeroService', () => {
         // data to return when this req comes in
         req.flush({id: 4, name: 'Aakash', strength: 100});
         controller.verify();
+        expect(true).toBe(true);
     }));
   })
 });
