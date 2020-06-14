@@ -364,6 +364,123 @@
           }
         }
       }
+    },
+    "rxjs-observables": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/rxjs-observables",
+      "sourceRoot": "projects/rxjs-observables/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rxjs-observables",
+            "index": "projects/rxjs-observables/src/index.html",
+            "main": "projects/rxjs-observables/src/main.ts",
+            "polyfills": "projects/rxjs-observables/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-observables/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/rxjs-observables/src/favicon.ico",
+              "projects/rxjs-observables/src/assets"
+            ],
+            "styles": [
+              "projects/rxjs-observables/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rxjs-observables/src/environments/environment.ts",
+                  "with": "projects/rxjs-observables/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rxjs-observables:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rxjs-observables:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rxjs-observables:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rxjs-observables/src/test.ts",
+            "polyfills": "projects/rxjs-observables/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-observables/tsconfig.spec.json",
+            "karmaConfig": "projects/rxjs-observables/karma.conf.js",
+            "assets": [
+              "projects/rxjs-observables/src/favicon.ico",
+              "projects/rxjs-observables/src/assets"
+            ],
+            "styles": [
+              "projects/rxjs-observables/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rxjs-observables/tsconfig.app.json",
+              "projects/rxjs-observables/tsconfig.spec.json",
+              "projects/rxjs-observables/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rxjs-observables/e2e/protractor.conf.js",
+            "devServerTarget": "rxjs-observables:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rxjs-observables:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "angular-universal"
 }
